@@ -1,0 +1,45 @@
+usertype:Admin/Employee
+	userid:abc
+	password:abc
+
+abc/abc/Admin
+
+bool ValidateUser(string userid,string pwd, string type, out string typeOfValidUser)
+{
+bool ValidAdminstatus;
+bool ValidEmpstatus;
+if(type==Admin)
+{
+
+var validateUser=from a in context.admininfo
+		where a.userid==userid && a.password==pwd
+if validateUser!=null
+{
+validAdminStatus=true;
+}
+else
+{
+var validateUser=from a in context.empinfo
+		where a.userid==userid && a.password==pwd
+ ValidEmpstatus=true;
+typeOfValidUser="Admin";
+}
+
+}
+
+if(validAdminStatus==true)
+{
+return validAdminStatus;
+typeOfValidUser="Employee";
+}
+else if(ValidEmpstatus==true)
+{
+return validEmpStatus;
+typeOfValidUser="No Such user";
+}
+else
+{
+return false;
+}
+}
+
